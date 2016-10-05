@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.1.1.js"
+	integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+	crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<style type="text/css">
+#login-dp {
+	min-width: 250px;
+	padding: 14px 14px 0;
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, .8);
+}
+
+#login-dp .help-block {
+	font-size: 12px
+}
+
+#login-dp .bottom {
+	background-color: rgba(255, 255, 255, .8);
+	border-top: 1px solid #ddd;
+	clear: both;
+	padding: 14px;
+}
+
+#login-dp .social-buttons {
+	margin: 12px 0
+}
+
+#login-dp .social-buttons a {
+	width: 49%;
+}
+
+#login-dp .form-group {
+	margin-bottom: 10px;
+}
+
+.btn-fb {
+	color: #fff;
+	background-color: #3b5998;
+}
+
+.btn-fb:hover {
+	color: #fff;
+	background-color: #496ebc
+}
+
+.btn-tw {
+	color: #fff;
+	background-color: #55acee;
+}
+
+.btn-tw:hover {
+	color: #fff;
+	background-color: #59b5fa;
+}
+
+@media ( max-width :768px) {
+	#login-dp {
+		background-color: inherit;
+		color: #fff;
+	}
+	#login-dp .bottom {
+		background-color: inherit;
+		border-top: 0 none;
+	}
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Brand</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">Link</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><p class="navbar-text">Already have an account?</p></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+						<ul id="login-dp" class="dropdown-menu">
+							<li>
+								<div class="row">
+									<div class="col-md-12">
+										Login via
+										<div class="social-buttons">
+											<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i>
+												Facebook</a> <a href="#" class="btn btn-tw"><i
+												class="fa fa-twitter"></i> Twitter</a>
+										</div>
+										or
+										<form class="form" role="form" method="post" action="login"
+											accept-charset="UTF-8" id="login-nav">
+											<div class="form-group">
+												<label class="sr-only" for="exampleInputEmail2">Email
+													address</label> <input type="email" class="form-control"
+													id="exampleInputEmail2" placeholder="Email address"
+													required>
+											</div>
+											<div class="form-group">
+												<label class="sr-only" for="exampleInputPassword2">Password</label>
+												<input type="password" class="form-control"
+													id="exampleInputPassword2" placeholder="Password" required>
+												<div class="help-block text-right">
+													<a href="">Forget the password ?</a>
+												</div>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary btn-block">Sign
+													in</button>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"> keep me
+													logged-in
+												</label>
+											</div>
+										</form>
+									</div>
+									<div class="bottom text-center">
+										<!-- Button trigger modal -->
+										<button class="btn btn-primary btn-lg" data-toggle="modal"
+											data-target="#myModalNorm">Join Us</button>
+
+									</div>
+								</div>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="page-header">
+			<h1>
+				Welcome to online banking that doesn't care! <small>We do,
+					just not much...</small>
+			</h1>
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12 well">
+
+				<h1>hello!</h1>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+
+				<!-- Modal Body -->
+				<div class="modal-body">
+
+					<form role="form">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email address</label> <input
+								type="email" class="form-control" id="exampleInputEmail1"
+								placeholder="Enter email" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Password</label> <input
+								type="password" class="form-control" id="exampleInputPassword1"
+								placeholder="Password" />
+						</div>
+						<div class="checkbox">
+							<label> <input type="checkbox" /> Check me out
+							</label>
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+
+
+				</div>
+
+				<!-- Modal Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
