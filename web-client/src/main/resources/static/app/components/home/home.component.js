@@ -9,22 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var router_1 = require('@angular/router');
-var application_component_1 = require('../components/application/application.component');
-var home_component_1 = require('../components/home/home.component');
-var BankModule = (function () {
-    function BankModule() {
+var HomeComponent = (function () {
+    function HomeComponent() {
     }
-    BankModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot([{ path: '', component: home_component_1.default }])],
-            declarations: [application_component_1.default, home_component_1.default],
-            bootstrap: [application_component_1.default]
+    HomeComponent = __decorate([
+        core_1.Component({
+            selector: 'bank-home-page',
+            templateUrl: 'app/components/home/home.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], BankModule);
-    return BankModule;
+    ], HomeComponent);
+    return HomeComponent;
 }());
-exports.BankModule = BankModule;
-//# sourceMappingURL=bank.module.js.map
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = HomeComponent;
+//# sourceMappingURL=home.component.js.map

@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var HomeComponent = (function () {
-    function HomeComponent() {
+var ApplicationComponent = (function () {
+    function ApplicationComponent() {
     }
-    HomeComponent = __decorate([
+    ApplicationComponent = __decorate([
         core_1.Component({
-            selector: 'bank-app',
-            template: "<h1>Banking on its way!</h1>"
+            selector: 'bank-application',
+            templateUrl: 'app/components/application/application.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeComponent);
-    return HomeComponent;
+    ], ApplicationComponent);
+    return ApplicationComponent;
 }());
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = ApplicationComponent;
+//# sourceMappingURL=application.component.js.map
