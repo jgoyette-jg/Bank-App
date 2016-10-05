@@ -27,8 +27,8 @@
       'rxjs':                       'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
 //      'SockJS':						'resources/sockjs.min.js'
-      'SockJS':						'http://cdn.jsdelivr.net/sockjs/1.1.1/sockjs.min.js',
-      'stompjs':					'http://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js'
+//      'SockJS':						'http://cdn.jsdelivr.net/sockjs/1.1.1/sockjs.min.js',
+//      'stompjs':					'http://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

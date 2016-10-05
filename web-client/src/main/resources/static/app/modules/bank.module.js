@@ -13,13 +13,20 @@ var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var application_component_1 = require('../components/application/application.component');
 var home_component_1 = require('../components/home/home.component');
+var nav_component_1 = require('../components/nav/nav.component');
+var account_component_1 = require('../components/account/account.component');
+var account_detail_component_1 = require('../components/account/detail/account.detail.component');
 var BankModule = (function () {
     function BankModule() {
     }
     BankModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot([{ path: '', component: home_component_1.default }])],
-            declarations: [application_component_1.default, home_component_1.default],
+            imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot([
+                    { path: '', component: home_component_1.default },
+                    { path: 'account', component: account_component_1.default },
+                    { path: 'account/:id', component: account_detail_component_1.default }
+                ])],
+            declarations: [application_component_1.default, home_component_1.default, nav_component_1.default, account_component_1.default, account_detail_component_1.default],
             bootstrap: [application_component_1.default]
         }), 
         __metadata('design:paramtypes', [])
