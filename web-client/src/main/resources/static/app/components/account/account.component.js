@@ -9,15 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var account_service_1 = require('../../services/account/account.service');
 var AccountComponent = (function () {
-    function AccountComponent() {
+    function AccountComponent(accountService) {
+        this.accountService = accountService;
+        this.accounts = accountService.getAccounts();
     }
     AccountComponent = __decorate([
         core_1.Component({
             selector: 'accounts-main',
             templateUrl: 'app/components/account/account.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [account_service_1.AccountService])
     ], AccountComponent);
     return AccountComponent;
 }());
