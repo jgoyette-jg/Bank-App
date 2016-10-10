@@ -9,7 +9,7 @@ export default class AccountComponent{
 	
 	accounts: Account[];
 	
-	constructor(private accountService:AccountService){
+	constructor(accountService:AccountService){
 		this.accounts = accountService.getAccounts();
 	}
 	

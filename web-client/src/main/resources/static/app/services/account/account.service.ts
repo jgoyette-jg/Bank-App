@@ -16,9 +16,9 @@ export class AccountService{
 	
 	getAccountById(id:number):Account{
 		
-		for(var i; i < accounts.length; i++){
-			if(accounts[i].id == id){
-				return accounts[i];
+		for(var i=0; i < this.accounts.length; i++){
+			if(this.accounts[i].id == id){
+				return this.accounts[i];
 			}
 		}
 		
@@ -32,7 +32,8 @@ export class Account{
 	constructor(
 			public id:number,
 			public name:string,
-			public balance:number
+			public balance:number,
+			public transactions:Transaction[]
 	){}
 	
 }

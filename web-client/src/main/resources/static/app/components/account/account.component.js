@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var account_service_1 = require('../../services/account/account.service');
 var AccountComponent = (function () {
     function AccountComponent(accountService) {
-        this.accountService = accountService;
         this.accounts = accountService.getAccounts();
     }
     AccountComponent = __decorate([

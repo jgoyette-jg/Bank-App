@@ -1,0 +1,18 @@
+<h4>Transaction History for {{this.account.name}}</h4>
+
+<table class="table table-hover table-striped">
+
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Amount</th>
+			<th>Description</th>
+		</tr>
+		<tr *ngFor="let transaction of transactions" [ngClass]="{'success': transaction.creditDebit=='C','danger': transaction.creditDebit=='D'}">
+			<td>{{transaction.transactionId}}</td>
+			<td>{{transaction.amount}}</td>
+			<td>{{transaction.description}}</td>
+		</tr>
+	</thead>
+
+</table>

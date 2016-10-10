@@ -18,6 +18,7 @@ var nav_component_1 = require('../components/nav/nav.component');
 var account_component_1 = require('../components/account/account.component');
 var account_detail_component_1 = require('../components/account/detail/account.detail.component');
 var account_service_1 = require('../services/account/account.service');
+var transaction_service_1 = require('../services/transaction/transaction.service');
 var BankModule = (function () {
     function BankModule() {
     }
@@ -26,10 +27,10 @@ var BankModule = (function () {
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule, router_1.RouterModule.forRoot([
                     { path: '', component: home_component_1.default },
                     { path: 'account', component: account_component_1.default },
-                    { path: 'account/:id', component: account_detail_component_1.default }
+                    { path: 'account/:accountId', component: account_detail_component_1.default }
                 ])],
             declarations: [application_component_1.default, home_component_1.default, nav_component_1.default, account_component_1.default, account_detail_component_1.default],
-            providers: [account_service_1.AccountService],
+            providers: [account_service_1.AccountService, transaction_service_1.TransactionService],
             bootstrap: [application_component_1.default]
         }), 
         __metadata('design:paramtypes', [])

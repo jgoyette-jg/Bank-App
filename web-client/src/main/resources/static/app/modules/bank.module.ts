@@ -11,6 +11,7 @@ import AccountComponent from '../components/account/account.component';
 import AccountDetailComponent from '../components/account/detail/account.detail.component';
 
 import {AccountService} from '../services/account/account.service'; 
+import {TransactionService} from '../services/transaction/transaction.service'; 
 
 
 @NgModule({
@@ -18,10 +19,10 @@ import {AccountService} from '../services/account/account.service';
 			[
 			 {path:'', component: HomeComponent},
 			 {path:'account', component: AccountComponent},
-			 {path:'account/:id', component: AccountDetailComponent}
+			 {path:'account/:accountId', component: AccountDetailComponent}
 			 ]) ],
 	declarations: [ ApplicationComponent,HomeComponent, NavComponent, AccountComponent, AccountDetailComponent ],
-	providers:	[AccountService],
+	providers:	[AccountService, TransactionService],
 	bootstrap: [ ApplicationComponent ]
 })
 export class BankModule{}

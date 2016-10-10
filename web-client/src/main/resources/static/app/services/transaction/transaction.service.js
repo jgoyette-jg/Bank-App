@@ -11,36 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var AccountService = (function () {
-    function AccountService(http) {
+var TransactionService = (function () {
+    function TransactionService(http) {
         this.http = http;
-        this.accounts = [new Account(1, "Checking", 250.00), new Account(2, "Savings", 35.60)];
+        this.transactions = [new Transaction(1, 33.25, 'Food', 'D'), new Transaction(2, 10.33, 'Gas', 'D'), new Transaction(3, 22.10, 'Water', 'D'), new Transaction(4, 22.10, 'Deposit', 'C')];
     }
-    AccountService.prototype.getAccounts = function () {
-        return this.accounts;
+    TransactionService.prototype.getTransactions = function () {
+        return this.transactions;
     };
-    AccountService.prototype.getAccountById = function (id) {
-        for (var i = 0; i < this.accounts.length; i++) {
-            if (this.accounts[i].id == id) {
-                return this.accounts[i];
-            }
-        }
-    };
-    AccountService = __decorate([
+    TransactionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], AccountService);
-    return AccountService;
+    ], TransactionService);
+    return TransactionService;
 }());
-exports.AccountService = AccountService;
-var Account = (function () {
-    function Account(id, name, balance, transactions) {
-        this.id = id;
-        this.name = name;
-        this.balance = balance;
-        this.transactions = transactions;
+exports.TransactionService = TransactionService;
+var Transaction = (function () {
+    function Transaction(transactionId, amount, description, creditDebit) {
+        this.transactionId = transactionId;
+        this.amount = amount;
+        this.description = description;
+        this.creditDebit = creditDebit;
     }
-    return Account;
+    return Transaction;
 }());
-exports.Account = Account;
-//# sourceMappingURL=account.service.js.map
+exports.Transaction = Transaction;
+//# sourceMappingURL=transaction.service.js.map

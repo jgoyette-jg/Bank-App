@@ -9,15 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var account_service_1 = require('../../../services/account/account.service');
+var transaction_service_1 = require('../../../services/transaction/transaction.service');
 var AccountDetailComponent = (function () {
-    function AccountDetailComponent() {
+    function AccountDetailComponent(route, accountService, transactionService) {
+        var accountId = parseInt(route.snapshot.params['accountId']);
+        this.account = accountService.getAccountById(accountId);
+        this.transactions = transactionService.getTransactions();
     }
     AccountDetailComponent = __decorate([
         core_1.Component({
             selector: 'account-detail',
             templateUrl: 'app/components/account/detail/account-detail.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, account_service_1.AccountService, transaction_service_1.TransactionService])
     ], AccountDetailComponent);
     return AccountDetailComponent;
 }());
