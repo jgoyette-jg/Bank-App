@@ -14,10 +14,20 @@ require('rxjs/add/operator/map');
 var TransactionService = (function () {
     function TransactionService(http) {
         this.http = http;
-        this.transactions = [new Transaction(1, 33.25, 'Food', 'D'), new Transaction(2, 10.33, 'Gas', 'D'), new Transaction(3, 22.10, 'Water', 'D'), new Transaction(4, 22.10, 'Deposit', 'C')];
+        this.transactions = [new Transaction(1, 1, 33.25, 'Food', 'D'), new Transaction(2, 1, 10.33, 'Gas', 'D'), new Transaction(3, 1, 22.10, 'Water', 'D'), new Transaction(4, 2, 22.10, 'Deposit', 'C')];
     }
-    TransactionService.prototype.getTransactions = function () {
-        return this.transactions;
+    TransactionService.prototype.getTransactionsForAccountId = function (accountId) {
+        var foundTransactions = [];
+        for (var i = 0; i < this.transactions.length; i++) {
+            if (this.transactions[i].accountId == accountId) {
+                foundTransactions.push(this.transactions[i]);
+            }
+        }
+        return foundTransactions;
+    };
+    TransactionService.prototype.addTransaction = function (transaction) {
+        transaction.transactionId = this.transactions.length;
+        this.transactions.push(transaction);
     };
     TransactionService = __decorate([
         core_1.Injectable(), 
@@ -27,8 +37,9 @@ var TransactionService = (function () {
 }());
 exports.TransactionService = TransactionService;
 var Transaction = (function () {
-    function Transaction(transactionId, amount, description, creditDebit) {
+    function Transaction(transactionId, accountId, amount, description, creditDebit) {
         this.transactionId = transactionId;
+        this.accountId = accountId;
         this.amount = amount;
         this.description = description;
         this.creditDebit = creditDebit;

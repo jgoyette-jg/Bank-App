@@ -16,7 +16,7 @@ var AccountDetailComponent = (function () {
     function AccountDetailComponent(route, accountService, transactionService) {
         var accountId = parseInt(route.snapshot.params['accountId']);
         this.account = accountService.getAccountById(accountId);
-        this.transactions = transactionService.getTransactions();
+        this.transactions = transactionService.getTransactionsForAccountId(accountId);
     }
     AccountDetailComponent = __decorate([
         core_1.Component({

@@ -14,7 +14,7 @@ require('rxjs/add/operator/map');
 var AccountService = (function () {
     function AccountService(http) {
         this.http = http;
-        this.accounts = [new Account(1, "Checking", 250.00), new Account(2, "Savings", 35.60)];
+        this.accounts = [new Account(1, "Checking", 250.00, []), new Account(2, "Savings", 35.60, [])];
     }
     AccountService.prototype.getAccounts = function () {
         return this.accounts;
@@ -24,6 +24,15 @@ var AccountService = (function () {
             if (this.accounts[i].id == id) {
                 return this.accounts[i];
             }
+        }
+    };
+    AccountService.prototype.updateAccount = function (transaction) {
+        var account = this.getAccountById(transaction.accountId);
+        if (transaction.creditDebit == 'C') {
+            account.balance += transaction.amount;
+        }
+        else if (transaction.creditDebit == 'D') {
+            account.balance -= transaction.amount;
         }
     };
     AccountService = __decorate([

@@ -17,7 +17,7 @@ export default class AccountDetailComponent{
 		const accountId = parseInt(route.snapshot.params['accountId']);
 		
 		this.account = accountService.getAccountById(accountId);
-		this.transactions = transactionService.getTransactions();
+		this.transactions = transactionService.getTransactionsForAccountId(accountId);
 	}
 	
 }

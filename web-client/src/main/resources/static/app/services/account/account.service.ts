@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {Http, URLSearchParams} from '@angular/http';
+import {Transaction} from '../transaction/transaction.service';
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 
@@ -8,7 +9,7 @@ export class AccountService{
 	
 	constructor(private http:Http){}
 	
-	accounts: Account[] = [new Account(1,"Checking",250.00), new Account(2,"Savings",35.60)];
+	accounts: Account[] = [new Account(1,"Checking",250.00,[]), new Account(2,"Savings",35.60,[])];
 	
 	getAccounts():Account[]{
 		return this.accounts;
@@ -22,6 +23,16 @@ export class AccountService{
 			}
 		}
 		
+	}
+	
+	updateAccount(transaction:Transaction){
+		let account = this.getAccountById(transaction.accountId);
+		
+		if(transaction.creditDebit=='C'){
+			account.balance += transaction.amount;
+		}else if(transaction.creditDebit=='D'){
+			account.balance -= transaction.amount;
+		}
 	}
 	
 }

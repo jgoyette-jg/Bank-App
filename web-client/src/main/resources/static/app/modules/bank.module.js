@@ -12,11 +12,14 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
+var forms_1 = require('@angular/forms');
 var application_component_1 = require('../components/application/application.component');
 var home_component_1 = require('../components/home/home.component');
 var nav_component_1 = require('../components/nav/nav.component');
 var account_component_1 = require('../components/account/account.component');
 var account_detail_component_1 = require('../components/account/detail/account.detail.component');
+var transaction_component_1 = require('../components/transaction/transaction.component');
+var deposit_withdraw_form_component_1 = require('../components/deposit_withdraw/deposit_withdraw_form.component');
 var account_service_1 = require('../services/account/account.service');
 var transaction_service_1 = require('../services/transaction/transaction.service');
 var BankModule = (function () {
@@ -24,12 +27,21 @@ var BankModule = (function () {
     }
     BankModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, router_1.RouterModule.forRoot([
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule,
+                router_1.RouterModule.forRoot([
                     { path: '', component: home_component_1.default },
                     { path: 'account', component: account_component_1.default },
-                    { path: 'account/:accountId', component: account_detail_component_1.default }
-                ])],
-            declarations: [application_component_1.default, home_component_1.default, nav_component_1.default, account_component_1.default, account_detail_component_1.default],
+                    { path: 'account/:accountId', component: account_detail_component_1.default },
+                    { path: 'dep_with', component: transaction_component_1.default }
+                ])
+            ],
+            declarations: [application_component_1.default,
+                home_component_1.default,
+                nav_component_1.default,
+                account_component_1.default,
+                account_detail_component_1.default,
+                transaction_component_1.default,
+                deposit_withdraw_form_component_1.default],
             providers: [account_service_1.AccountService, transaction_service_1.TransactionService],
             bootstrap: [application_component_1.default]
         }), 
