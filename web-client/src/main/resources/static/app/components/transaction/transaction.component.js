@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-////
 var account_service_1 = require('../../services/account/account.service');
 var transaction_service_1 = require('../../services/transaction/transaction.service');
 var TransactionComponent = (function () {
@@ -19,20 +18,15 @@ var TransactionComponent = (function () {
         this.accounts = [];
         this.accounts = this.accountService.getAccounts();
     }
-    TransactionComponent.prototype.deposit = function (transaction) {
-        transaction.creditDebit = 'C';
-        this.accountService.updateAccount(transaction);
-        this.transactionService.addTransaction(transaction);
-    };
-    TransactionComponent.prototype.withdraw = function (transaction) {
-        transaction.creditDebit = 'D';
+    TransactionComponent.prototype.transactionMade = function (transaction) {
+        console.log(transaction);
         this.accountService.updateAccount(transaction);
         this.transactionService.addTransaction(transaction);
     };
     TransactionComponent = __decorate([
         core_1.Component({
             selector: 'make-a-transaction',
-            template: "<deposit_withdraw_form-component [accounts]=\"accounts\"></deposit_withdraw_form-component>"
+            template: "<deposit_withdraw_form-component [accounts]=\"accounts\" (transactionMade)=\"transactionMade($event)\"></deposit_withdraw_form-component>"
         }), 
         __metadata('design:paramtypes', [account_service_1.AccountService, transaction_service_1.TransactionService])
     ], TransactionComponent);
