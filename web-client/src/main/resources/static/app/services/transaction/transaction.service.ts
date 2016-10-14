@@ -27,6 +27,26 @@ export class TransactionService{
 		this.transactions.push(transaction);
 	}
 	
+	transferFunds(transfer:Transfer){
+		
+		this.transactions.push(new Transaction(
+							this.transactions.length,
+							transfer.fromAccountId,
+							transfer.amount,
+							transfer.description,
+							'D'
+		));
+		
+		this.transactions.push(new Transaction(
+							this.transactions.length,
+							transfer.toAccountId,
+							transfer.amount,
+							transfer.description,
+							'C'
+		));
+		
+	}
+	
 }
 
 export class Transaction{
@@ -36,5 +56,14 @@ export class Transaction{
 		public amount:number,
 		public description:string,
 		public creditDebit:string
+	){}
+}
+
+export class Transfer{
+	constructor(
+		public fromAccountId:number,
+		public toAccountId:number,
+		public amount:number,
+		public description:string
 	){}
 }

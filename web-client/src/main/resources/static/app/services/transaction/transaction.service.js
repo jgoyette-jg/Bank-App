@@ -29,6 +29,10 @@ var TransactionService = (function () {
         transaction.transactionId = this.transactions.length;
         this.transactions.push(transaction);
     };
+    TransactionService.prototype.transferFunds = function (transfer) {
+        this.transactions.push(new Transaction(this.transactions.length, transfer.fromAccountId, transfer.amount, transfer.description, 'D'));
+        this.transactions.push(new Transaction(this.transactions.length, transfer.toAccountId, transfer.amount, transfer.description, 'C'));
+    };
     TransactionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
@@ -47,4 +51,14 @@ var Transaction = (function () {
     return Transaction;
 }());
 exports.Transaction = Transaction;
+var Transfer = (function () {
+    function Transfer(fromAccountId, toAccountId, amount, description) {
+        this.fromAccountId = fromAccountId;
+        this.toAccountId = toAccountId;
+        this.amount = amount;
+        this.description = description;
+    }
+    return Transfer;
+}());
+exports.Transfer = Transfer;
 //# sourceMappingURL=transaction.service.js.map

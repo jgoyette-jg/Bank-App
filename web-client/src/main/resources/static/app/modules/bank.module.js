@@ -20,6 +20,8 @@ var account_component_1 = require('../components/account/account.component');
 var account_detail_component_1 = require('../components/account/detail/account.detail.component');
 var transaction_component_1 = require('../components/transaction/transaction.component');
 var deposit_withdraw_form_component_1 = require('../components/deposit_withdraw/deposit_withdraw_form.component');
+var transfer_component_1 = require('../components/transfer/transfer.component');
+var transfer_form_component_1 = require('../components/transfer/transfer_form/transfer.form.component');
 var account_service_1 = require('../services/account/account.service');
 var transaction_service_1 = require('../services/transaction/transaction.service');
 var BankModule = (function () {
@@ -32,7 +34,8 @@ var BankModule = (function () {
                     { path: '', component: home_component_1.default },
                     { path: 'account', component: account_component_1.default },
                     { path: 'account/:accountId', component: account_detail_component_1.default },
-                    { path: 'dep_with', component: transaction_component_1.default }
+                    { path: 'dep_with', component: transaction_component_1.default },
+                    { path: 'transfer', component: transfer_component_1.default }
                 ])
             ],
             declarations: [application_component_1.default,
@@ -41,7 +44,9 @@ var BankModule = (function () {
                 account_component_1.default,
                 account_detail_component_1.default,
                 transaction_component_1.default,
-                deposit_withdraw_form_component_1.default],
+                deposit_withdraw_form_component_1.default,
+                transfer_component_1.default,
+                transfer_form_component_1.default],
             providers: [account_service_1.AccountService, transaction_service_1.TransactionService],
             bootstrap: [application_component_1.default]
         }), 

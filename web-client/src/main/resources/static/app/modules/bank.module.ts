@@ -12,6 +12,8 @@ import AccountComponent from '../components/account/account.component';
 import AccountDetailComponent from '../components/account/detail/account.detail.component';
 import TransactionComponent from '../components/transaction/transaction.component';
 import DepositWithdrawFormComponent from '../components/deposit_withdraw/deposit_withdraw_form.component';
+import TransferComponent from '../components/transfer/transfer.component';
+import TransferFormComponent from '../components/transfer/transfer_form/transfer.form.component';
 
 import {AccountService} from '../services/account/account.service'; 
 import {TransactionService} from '../services/transaction/transaction.service'; 
@@ -23,7 +25,8 @@ import {TransactionService} from '../services/transaction/transaction.service';
 					 {path:'', component: HomeComponent},
 					 {path:'account', component: AccountComponent},
 					 {path:'account/:accountId', component: AccountDetailComponent},
-					 {path:'dep_with', component: TransactionComponent}
+					 {path:'dep_with', component: TransactionComponent},
+					 {path:'transfer', component: TransferComponent}
 					 ]) 
 			 ],
 	declarations: [ ApplicationComponent, 
@@ -32,7 +35,9 @@ import {TransactionService} from '../services/transaction/transaction.service';
 	                AccountComponent, 
 	                AccountDetailComponent,
 	                TransactionComponent,
-	                DepositWithdrawFormComponent],
+	                DepositWithdrawFormComponent,
+	                TransferComponent,
+	                TransferFormComponent],
 	providers:	[AccountService, TransactionService],
 	bootstrap: [ ApplicationComponent ]
 })
