@@ -16,7 +16,8 @@ import TransferComponent from '../components/transfer/transfer.component';
 import TransferFormComponent from '../components/transfer/transfer_form/transfer.form.component';
 
 import {AccountService} from '../services/account/account.service'; 
-import {TransactionService} from '../services/transaction/transaction.service'; 
+import {TransactionService} from '../services/transaction/transaction.service';
+import {UserService} from '../services/user/user.service'; 
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import {TransactionService} from '../services/transaction/transaction.service';
 	                DepositWithdrawFormComponent,
 	                TransferComponent,
 	                TransferFormComponent],
-	providers:	[AccountService, TransactionService],
+	providers:	[AccountService, TransactionService, UserService],
 	bootstrap: [ ApplicationComponent ]
 })
 export class BankModule{}

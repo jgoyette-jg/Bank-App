@@ -24,6 +24,7 @@ var transfer_component_1 = require('../components/transfer/transfer.component');
 var transfer_form_component_1 = require('../components/transfer/transfer_form/transfer.form.component');
 var account_service_1 = require('../services/account/account.service');
 var transaction_service_1 = require('../services/transaction/transaction.service');
+var user_service_1 = require('../services/user/user.service');
 var BankModule = (function () {
     function BankModule() {
     }
@@ -47,7 +48,7 @@ var BankModule = (function () {
                 deposit_withdraw_form_component_1.default,
                 transfer_component_1.default,
                 transfer_form_component_1.default],
-            providers: [account_service_1.AccountService, transaction_service_1.TransactionService],
+            providers: [account_service_1.AccountService, transaction_service_1.TransactionService, user_service_1.UserService],
             bootstrap: [application_component_1.default]
         }), 
         __metadata('design:paramtypes', [])
