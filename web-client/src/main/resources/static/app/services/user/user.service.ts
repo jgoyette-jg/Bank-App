@@ -6,12 +6,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService{
 	
-	users:User[] = [
+	private users:User[] = [
 	                     new User(1,'TOM','1234',false),
 	                     new User(2,'SAM','1234',false)
 	];
 
-	user:User = null;
+	private user:User;
 	
 	constructor(private http:Http){}
 	
@@ -23,7 +23,7 @@ export class UserService{
 	}
 	
 	authenticateUser(user:User):boolean{
-		
+		console.log(user.username);
 		for(var i = 0; i<this.users.length; i++){
 			if(this.users[i].username == user.username && this.users[i].password == user.password){
 				this.user = this.users[i];
@@ -48,6 +48,10 @@ export class UserService{
 		this.users.push(user);
 		
 		return true;
+	}
+	
+	getUser():User{
+		return this.user;
 	}
 	
 }

@@ -14,6 +14,7 @@ import TransactionComponent from '../components/transaction/transaction.componen
 import DepositWithdrawFormComponent from '../components/deposit_withdraw/deposit_withdraw_form.component';
 import TransferComponent from '../components/transfer/transfer.component';
 import TransferFormComponent from '../components/transfer/transfer_form/transfer.form.component';
+import LoginComponent from '../components/user/login.component';
 
 import {AccountService} from '../services/account/account.service'; 
 import {TransactionService} from '../services/transaction/transaction.service';
@@ -38,7 +39,8 @@ import {UserService} from '../services/user/user.service';
 	                TransactionComponent,
 	                DepositWithdrawFormComponent,
 	                TransferComponent,
-	                TransferFormComponent],
+	                TransferFormComponent,
+	                LoginComponent],
 	providers:	[AccountService, TransactionService, UserService],
 	bootstrap: [ ApplicationComponent ]
 })

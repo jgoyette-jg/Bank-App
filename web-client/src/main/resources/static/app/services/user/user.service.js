@@ -18,7 +18,6 @@ var UserService = (function () {
             new User(1, 'TOM', '1234', false),
             new User(2, 'SAM', '1234', false)
         ];
-        this.user = null;
     }
     UserService.prototype.isUserAuthenticated = function () {
         if (this.user != null)
@@ -27,6 +26,7 @@ var UserService = (function () {
             return false;
     };
     UserService.prototype.authenticateUser = function (user) {
+        console.log(user.username);
         for (var i = 0; i < this.users.length; i++) {
             if (this.users[i].username == user.username && this.users[i].password == user.password) {
                 this.user = this.users[i];
@@ -46,6 +46,9 @@ var UserService = (function () {
         user.id = this.users.length;
         this.users.push(user);
         return true;
+    };
+    UserService.prototype.getUser = function () {
+        return this.user;
     };
     UserService = __decorate([
         core_1.Injectable(), 
