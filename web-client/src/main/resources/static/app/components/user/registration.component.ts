@@ -1,7 +1,17 @@
 import {Component} from '@angular/core';
 
+import { 
+	  FormBuilder,
+	  FormGroup,
+	  Validators
+	} from '@angular/forms';
+
 import {User,UserService} from '../../services/user/user.service';
 
+@Component({
+	selector:'registration-form',
+	templateUrl:'app/components/user/register.html'
+})
 export default class RegistrationComponent{
 	
 	private registrationForm:FormGroup;
@@ -15,7 +25,7 @@ export default class RegistrationComponent{
 		  });
 	}
 	
-	register(user:User){
+	register(){
 		
 		let user = new User(0,
 				this.registrationForm.value.username,
