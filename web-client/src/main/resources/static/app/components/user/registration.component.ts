@@ -32,14 +32,14 @@ export default class RegistrationComponent{
 				this.registrationForm.value.password,
 				false);
 		
-		let registrationSuccess = this.userService.authenticateUser(user);
+		let registrationSuccess = this.userService.registerUser(user);
 		console.log('Getting hit...');
 		console.log(user);
 		if(registrationSuccess){
+			console.log('Created user!!!');
+		}else{
 			console.log('User exists...');
 			this.registrationMessage = 'User may already exist.';
-		}else{
-			console.log('Created user!!!');
 		}
 		
 	}

@@ -20,6 +20,7 @@
 								<input type="text" class="form-control"
 									id="username" placeholder="Username" formControlName="username">
 								<p *ngIf="loginForm.controls.username.errors">Please enter a username</p>
+								<p *ngIf="loginMessage !== null">{{loginMessage}}</p>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="password">Password</label>
@@ -43,8 +44,7 @@
 					</div>
 					<div class="bottom text-center">
 						<!-- Button trigger modal -->
-						<button class="btn btn-primary btn-lg" data-toggle="modal"
-							data-target="#myModalNorm">Join Us</button>
+						<button class="btn btn-primary btn-lg" [routerLink]="['/register']">Join Us</button>
 
 					</div>
 				</div>

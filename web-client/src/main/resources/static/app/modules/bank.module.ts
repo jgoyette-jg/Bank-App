@@ -29,7 +29,8 @@ import {UserService} from '../services/user/user.service';
 					 {path:'account', component: AccountComponent},
 					 {path:'account/:accountId', component: AccountDetailComponent},
 					 {path:'dep_with', component: TransactionComponent},
-					 {path:'transfer', component: TransferComponent}
+					 {path:'transfer', component: TransferComponent},
+					 {path:'register', component: RegistrationComponent}
 					 ]) 
 			 ],
 	declarations: [ ApplicationComponent, 

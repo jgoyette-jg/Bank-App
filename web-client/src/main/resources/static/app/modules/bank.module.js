@@ -38,7 +38,8 @@ var BankModule = (function () {
                     { path: 'account', component: account_component_1.default },
                     { path: 'account/:accountId', component: account_detail_component_1.default },
                     { path: 'dep_with', component: transaction_component_1.default },
-                    { path: 'transfer', component: transfer_component_1.default }
+                    { path: 'transfer', component: transfer_component_1.default },
+                    { path: 'register', component: registration_component_1.default }
                 ])
             ],
             declarations: [application_component_1.default,

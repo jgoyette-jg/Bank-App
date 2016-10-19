@@ -40,6 +40,7 @@ export class UserService{
 		for(var i = 0; i<this.users.length; i++){
 			if(this.users[i].username == user.username){
 				// User not registered as they already exist
+				console.log('Existing!')
 				return false;
 			}
 		}
