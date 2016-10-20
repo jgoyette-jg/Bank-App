@@ -45,6 +45,9 @@ export class UserService{
 			}
 		}
 		
+		this.http.post('http://localhost:8086/user/register',user).map(response => response.json())
+			.subscribe(user => this.user,error => console.error(error));
+		
 		user.id = this.users.length;
 		this.users.push(user);
 		

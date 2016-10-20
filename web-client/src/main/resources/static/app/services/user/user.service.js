@@ -37,6 +37,7 @@ var UserService = (function () {
         return false;
     };
     UserService.prototype.registerUser = function (user) {
+        var _this = this;
         for (var i = 0; i < this.users.length; i++) {
             if (this.users[i].username == user.username) {
                 // User not registered as they already exist
@@ -44,6 +45,8 @@ var UserService = (function () {
                 return false;
             }
         }
+        this.http.post('http://localhost:8086/user/register', user).map(function (response) { return response.json(); })
+            .subscribe(function (user) { return _this.user; }, function (error) { return console.error(error); });
         user.id = this.users.length;
         this.users.push(user);
         return true;
