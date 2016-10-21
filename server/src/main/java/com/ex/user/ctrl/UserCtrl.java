@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ex.authority.domain.Authority;
+import com.ex.authority.service.AuthorityService;
 import com.ex.user.domain.User;
 import com.ex.user.service.UserService;
 
@@ -23,6 +25,9 @@ public class UserCtrl {
 	
 	@Autowired
 	private UserService userServiceImpl;
+	
+	@Autowired
+	private AuthorityService authorityServiceImpl;
 
 	@GetMapping
 	public ResponseEntity<Principal> getUser(Principal user){
@@ -33,6 +38,10 @@ public class UserCtrl {
 	public ResponseEntity<User> registerUser(@RequestBody User user){
 		System.out.println(user);
 		userServiceImpl.createUser(user);
+		Authority auth = new Authority();
+		auth.setAuthority("USER");
+		auth.setUser(user);
+		authorityServiceImpl.addAuthorityToUser(auth);
 		return new ResponseEntity<User>(user, HttpStatus.CREATED);
 	}
 	
