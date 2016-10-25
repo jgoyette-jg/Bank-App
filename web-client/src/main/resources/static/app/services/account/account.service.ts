@@ -15,6 +15,10 @@ export class AccountService{
 		return this.accounts;
 	}
 	
+	getAccountsByUsername(username:string):Observable<Account[]>{
+		return this.http.get('http://localhost:8086/account/all/${username}',{ withCredentials: true }).map(response => response.json());
+	}
+	
 	getAccountById(id:number):Account{
 		
 		for(var i=0; i < this.accounts.length; i++){

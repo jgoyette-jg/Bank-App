@@ -19,6 +19,9 @@ var AccountService = (function () {
     AccountService.prototype.getAccounts = function () {
         return this.accounts;
     };
+    AccountService.prototype.getAccountsByUsername = function (username) {
+        return this.http.get('http://localhost:8086/account/all/${username}', { withCredentials: true }).map(function (response) { return response.json(); });
+    };
     AccountService.prototype.getAccountById = function (id) {
         for (var i = 0; i < this.accounts.length; i++) {
             if (this.accounts[i].id == id) {

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {Account,AccountService} from '../../services/account/account.service'; 
+import {Account,AccountService} from '../../services/account/account.service';
+import {User,UserService} from '../../services/user/user.service';
 
 @Component({
 	selector:'accounts-main',
@@ -7,10 +8,13 @@ import {Account,AccountService} from '../../services/account/account.service';
 })
 export default class AccountComponent{
 	
-	accounts: Account[];
+	accounts: Account[] = null;
 	
-	constructor(accountService:AccountService){
-		this.accounts = accountService.getAccounts();
+	constructor(private accountService:AccountService, private userService:UserService){
+		this.accountService.getAccountsByUsername(userService.getUser().username).subscribe(
+				accounts => {this.accounts = accounts; console.log(accounts);},
+				error => {console.log(error);}
+		);
 	}
 	
 }

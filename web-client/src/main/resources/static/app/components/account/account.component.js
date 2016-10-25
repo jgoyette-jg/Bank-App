@@ -10,16 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var account_service_1 = require('../../services/account/account.service');
+var user_service_1 = require('../../services/user/user.service');
 var AccountComponent = (function () {
-    function AccountComponent(accountService) {
-        this.accounts = accountService.getAccounts();
+    function AccountComponent(accountService, userService) {
+        var _this = this;
+        this.accountService = accountService;
+        this.userService = userService;
+        this.accounts = null;
+        this.accountService.getAccountsByUsername(userService.getUser().username).subscribe(function (accounts) { _this.accounts = accounts; console.log(accounts); }, function (error) { console.log(error); });
     }
     AccountComponent = __decorate([
         core_1.Component({
             selector: 'accounts-main',
             templateUrl: 'app/components/account/account.html'
         }), 
-        __metadata('design:paramtypes', [account_service_1.AccountService])
+        __metadata('design:paramtypes', [account_service_1.AccountService, user_service_1.UserService])
     ], AccountComponent);
     return AccountComponent;
 }());

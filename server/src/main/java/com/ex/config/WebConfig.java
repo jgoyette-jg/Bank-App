@@ -12,6 +12,7 @@ public class WebConfig{
 	
 	@Bean
 	public FilterRegistrationBean corsFilter() {
+		System.err.println("Init");
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);

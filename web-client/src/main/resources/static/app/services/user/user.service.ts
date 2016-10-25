@@ -18,7 +18,7 @@ export class UserService{
 	}
 	
 	authenticateUser(user:User):Observable<User>{
-		return this.call('http://localhost:8086/login',user).map(response => response.json());
+		return this.call('http://localhost:8086/user',user).map(response => response.json());
 	}
 	
 	registerUser(user:User):Observable<User>{
@@ -39,7 +39,7 @@ export class UserService{
 	    let headers = new Headers();
 	    headers.append("Authorization", "Basic " + btoa(username + ":" + password)); 
 	    headers.append("Content-Type", "application/x-www-form-urlencoded");
-	    return this.http.post(url, data, {headers: headers});
+	    return this.http.get(url, {headers: headers});
 	}
 	
 }

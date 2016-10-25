@@ -22,7 +22,7 @@ var UserService = (function () {
             return false;
     };
     UserService.prototype.authenticateUser = function (user) {
-        return this.call('http://localhost:8086/login', user).map(function (response) { return response.json(); });
+        return this.call('http://localhost:8086/user', user).map(function (response) { return response.json(); });
     };
     UserService.prototype.registerUser = function (user) {
         return this.http.post('http://localhost:8086/user/register', user).map(function (response) { return response.json(); });
@@ -39,7 +39,7 @@ var UserService = (function () {
         var headers = new http_1.Headers();
         headers.append("Authorization", "Basic " + btoa(username + ":" + password));
         headers.append("Content-Type", "application/x-www-form-urlencoded");
-        return this.http.post(url, data, { headers: headers });
+        return this.http.get(url, { headers: headers });
     };
     UserService = __decorate([
         core_1.Injectable(), 
