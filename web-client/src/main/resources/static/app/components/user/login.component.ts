@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 
 import { 
 	  FormBuilder,
@@ -18,7 +19,7 @@ export default class LoginComponent{
 
 	private loginMessage:string = null;
 	
-	constructor(private userService:UserService, private formBuilder:FormBuilder){
+	constructor(private userService:UserService, private formBuilder:FormBuilder, private router:Router){
 		this.loginForm = this.formBuilder.group({
 			username: ['', Validators.required],
 	    	password: ['', Validators.required]
@@ -30,14 +31,10 @@ export default class LoginComponent{
 				this.loginForm.value.username,
 				this.loginForm.value.password,
 				false);
-		user.authenticated = this.userService.authenticateUser(user);
-		console.log('Getting hit...');
-		console.log(user);
-		if(!user.authenticated){
-			console.log('Not valid');
-			this.loginMessage = 'Invalid credentials...';
-		}else{
-			console.log('Valid!');
-		}
+		this.userService.authenticateUser(user)
+				.subscribe(
+				user => {this.userService.setUser(user);this.router.navigate(['/account']);},
+				error => {console.error(error); this.loginMessage = error;}
+				);
 	}
 }

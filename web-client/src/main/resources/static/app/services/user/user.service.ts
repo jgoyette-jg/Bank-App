@@ -1,15 +1,10 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {Http, URLSearchParams} from '@angular/http';
+import {Http, URLSearchParams, Headers} from '@angular/http';
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService{
-	
-	private users:User[] = [
-	                     new User(1,'TOM','1234',false),
-	                     new User(2,'SAM','1234',false)
-	];
 
 	private user:User;
 	
@@ -22,40 +17,29 @@ export class UserService{
 			return false;
 	}
 	
-	authenticateUser(user:User):boolean{
-		console.log(user.username);
-		for(var i = 0; i<this.users.length; i++){
-			if(this.users[i].username == user.username && this.users[i].password == user.password){
-				this.user = this.users[i];
-				this.user.authenticated = true;
-				return this.user.authenticated;
-			}
-		}
-		
-		return false;
+	authenticateUser(user:User):Observable<User>{
+		return this.call('http://localhost:8086/login',user).map(response => response.json());
 	}
 	
-	registerUser(user:User):boolean{
-		
-		for(var i = 0; i<this.users.length; i++){
-			if(this.users[i].username == user.username){
-				// User not registered as they already exist
-				console.log('Existing!')
-				return false;
-			}
-		}
-		
-		this.http.post('http://localhost:8086/user/register',user).map(response => response.json())
-			.subscribe(user => this.user,error => console.error(error));
-		
-		user.id = this.users.length;
-		this.users.push(user);
-		
-		return true;
+	registerUser(user:User):Observable<User>{
+		return this.http.post('http://localhost:8086/user/register',user).map(response => response.json());
 	}
 	
 	getUser():User{
 		return this.user;
+	}
+	
+	setUser(user:User){
+		this.user = user;
+	}
+	
+	call(url,data){
+		let username: string = data.username;
+		let password: string = data.password;
+	    let headers = new Headers();
+	    headers.append("Authorization", "Basic " + btoa(username + ":" + password)); 
+	    headers.append("Content-Type", "application/x-www-form-urlencoded");
+	    return this.http.post(url, data, {headers: headers});
 	}
 	
 }

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 
 import { 
 	  FormBuilder,
@@ -18,7 +19,7 @@ export default class RegistrationComponent{
 
 	private registrationMessage:string = null;
 	
-	constructor(private userService:UserService, private formBuilder:FormBuilder){
+	constructor(private userService:UserService, private formBuilder:FormBuilder, private router:Router){
 		this.registrationForm = this.formBuilder.group({
 			username: ['', Validators.required],
 	    	password: ['', Validators.required]
@@ -32,15 +33,11 @@ export default class RegistrationComponent{
 				this.registrationForm.value.password,
 				false);
 		
-		let registrationSuccess = this.userService.registerUser(user);
-		console.log('Getting hit...');
-		console.log(user);
-		if(registrationSuccess){
-			console.log('Created user!!!');
-		}else{
-			console.log('User exists...');
-			this.registrationMessage = 'User may already exist.';
-		}
+		this.userService.registerUser(user)
+						.subscribe(
+								user => {this.router.navigate(['/']);},
+								error => {console.error(error); this.registrationMessage = error;}
+						);
 		
 	}
 }

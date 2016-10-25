@@ -9,12 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
 var user_service_1 = require('../../services/user/user.service');
 var RegistrationComponent = (function () {
-    function RegistrationComponent(userService, formBuilder) {
+    function RegistrationComponent(userService, formBuilder, router) {
         this.userService = userService;
         this.formBuilder = formBuilder;
+        this.router = router;
         this.registrationMessage = null;
         this.registrationForm = this.formBuilder.group({
             username: ['', forms_1.Validators.required],
@@ -22,24 +24,17 @@ var RegistrationComponent = (function () {
         });
     }
     RegistrationComponent.prototype.register = function () {
+        var _this = this;
         var user = new user_service_1.User(0, this.registrationForm.value.username, this.registrationForm.value.password, false);
-        var registrationSuccess = this.userService.registerUser(user);
-        console.log('Getting hit...');
-        console.log(user);
-        if (registrationSuccess) {
-            console.log('Created user!!!');
-        }
-        else {
-            console.log('User exists...');
-            this.registrationMessage = 'User may already exist.';
-        }
+        this.userService.registerUser(user)
+            .subscribe(function (user) { _this.router.navigate(['/']); }, function (error) { console.error(error); _this.registrationMessage = error; });
     };
     RegistrationComponent = __decorate([
         core_1.Component({
             selector: 'registration-form',
             templateUrl: 'app/components/user/register.html'
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [user_service_1.UserService, forms_1.FormBuilder, router_1.Router])
     ], RegistrationComponent);
     return RegistrationComponent;
 }());

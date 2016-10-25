@@ -14,10 +14,6 @@ require('rxjs/add/operator/map');
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
-        this.users = [
-            new User(1, 'TOM', '1234', false),
-            new User(2, 'SAM', '1234', false)
-        ];
     }
     UserService.prototype.isUserAuthenticated = function () {
         if (this.user != null)
@@ -26,33 +22,24 @@ var UserService = (function () {
             return false;
     };
     UserService.prototype.authenticateUser = function (user) {
-        console.log(user.username);
-        for (var i = 0; i < this.users.length; i++) {
-            if (this.users[i].username == user.username && this.users[i].password == user.password) {
-                this.user = this.users[i];
-                this.user.authenticated = true;
-                return this.user.authenticated;
-            }
-        }
-        return false;
+        return this.call('http://localhost:8086/login', user).map(function (response) { return response.json(); });
     };
     UserService.prototype.registerUser = function (user) {
-        var _this = this;
-        for (var i = 0; i < this.users.length; i++) {
-            if (this.users[i].username == user.username) {
-                // User not registered as they already exist
-                console.log('Existing!');
-                return false;
-            }
-        }
-        this.http.post('http://localhost:8086/user/register', user).map(function (response) { return response.json(); })
-            .subscribe(function (user) { return _this.user; }, function (error) { return console.error(error); });
-        user.id = this.users.length;
-        this.users.push(user);
-        return true;
+        return this.http.post('http://localhost:8086/user/register', user).map(function (response) { return response.json(); });
     };
     UserService.prototype.getUser = function () {
         return this.user;
+    };
+    UserService.prototype.setUser = function (user) {
+        this.user = user;
+    };
+    UserService.prototype.call = function (url, data) {
+        var username = data.username;
+        var password = data.password;
+        var headers = new http_1.Headers();
+        headers.append("Authorization", "Basic " + btoa(username + ":" + password));
+        headers.append("Content-Type", "application/x-www-form-urlencoded");
+        return this.http.post(url, data, { headers: headers });
     };
     UserService = __decorate([
         core_1.Injectable(), 

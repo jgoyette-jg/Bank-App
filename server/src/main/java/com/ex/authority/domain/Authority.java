@@ -19,7 +19,7 @@ public class Authority {
 	private Long id;
 	private String authority;
 	@ManyToOne(targetEntity = User.class)
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "username",referencedColumnName="username")
 	private User user;
 
 	@Override
