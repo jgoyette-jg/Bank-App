@@ -16,3 +16,6 @@
 <div *ngIf="accounts == null || accounts.length == 0">
 	There are no accounts to display!
 </div>
+<div class="well">
+	<account-creation-form (accountCreated)="createAccount($event)"></account-creation-form>
+</div>

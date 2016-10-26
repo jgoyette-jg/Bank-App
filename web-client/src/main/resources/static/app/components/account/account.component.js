@@ -17,8 +17,13 @@ var AccountComponent = (function () {
         this.accountService = accountService;
         this.userService = userService;
         this.accounts = null;
+        this.accountCreationMessage = null;
         this.accountService.getAccountsByUsername(userService.getUser().username).subscribe(function (accounts) { _this.accounts = accounts; console.log(accounts); }, function (error) { console.log(error); });
     }
+    AccountComponent.prototype.createAccount = function (account) {
+        var _this = this;
+        this.accountService.createAccount(account).subscribe(function (account) { _this.accountCreationMessage = 'Successfully created ' + account.name + '!'; }, function (error) { _this.accountCreationMessage = error; console.log(error); });
+    };
     AccountComponent = __decorate([
         core_1.Component({
             selector: 'accounts-main',

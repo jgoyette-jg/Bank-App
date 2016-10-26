@@ -16,6 +16,7 @@ import TransferComponent from '../components/transfer/transfer.component';
 import TransferFormComponent from '../components/transfer/transfer_form/transfer.form.component';
 import LoginComponent from '../components/user/login.component';
 import RegistrationComponent from '../components/user/registration.component';
+import AccountCreationForm from '../components/account/create/account.creation.form';
 
 import {AccountService} from '../services/account/account.service'; 
 import {TransactionService} from '../services/transaction/transaction.service';
@@ -43,7 +44,8 @@ import {UserService} from '../services/user/user.service';
 	                TransferComponent,
 	                TransferFormComponent,
 	                LoginComponent,
-	                RegistrationComponent ],
+	                RegistrationComponent,
+	                AccountCreationForm],
 	providers:	[AccountService, TransactionService, UserService],
 	bootstrap: [ ApplicationComponent ]
 })

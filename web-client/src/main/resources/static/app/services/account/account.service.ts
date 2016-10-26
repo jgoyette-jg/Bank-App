@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {Http, URLSearchParams} from '@angular/http';
+import {Http, URLSearchParams, Headers, RequestOptions} from '@angular/http';
 import {Transaction} from '../transaction/transaction.service';
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
@@ -17,6 +17,13 @@ export class AccountService{
 	
 	getAccountsByUsername(username:string):Observable<Account[]>{
 		return this.http.get('http://localhost:8086/account/all/${username}',{ withCredentials: true }).map(response => response.json());
+	}
+	
+	createAccount(account:Account):Observable<Account>{
+	    let headers = new Headers();
+	    headers.append('Content-Type', 'application/json');
+		let options = new RequestOptions({ headers: headers, withCredentials: true });
+		return this.http.post('http://localhost:8086/account/add',account,options).map(response=>response.json());
 	}
 	
 	getAccountById(id:number):Account{
