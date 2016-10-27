@@ -1,5 +1,6 @@
 package com.ex.user.domain;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -12,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable{
 
 	@Id
     @GeneratedValue(generator = "uuid2")

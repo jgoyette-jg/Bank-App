@@ -21,7 +21,7 @@ var AccountCreationForm = (function () {
         });
     }
     AccountCreationForm.prototype.createAccount = function () {
-        this.account = new account_service_1.Account(0, this.accountForm.value.accountName, this.accountForm.value.balance, []);
+        this.account = new account_service_1.Account(0, this.accountForm.value.accountName, this.accountForm.value.balance, null, []);
         this.accountCreated.emit(this.account);
     };
     __decorate([

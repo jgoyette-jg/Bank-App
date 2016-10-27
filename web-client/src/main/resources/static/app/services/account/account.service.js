@@ -14,13 +14,16 @@ require('rxjs/add/operator/map');
 var AccountService = (function () {
     function AccountService(http) {
         this.http = http;
-        this.accounts = [new Account(1, "Checking", 250.00, []), new Account(2, "Savings", 35.60, [])];
+        this.accounts = null;
     }
     AccountService.prototype.getAccounts = function () {
         return this.accounts;
     };
+    AccountService.prototype.setAccounts = function (accounts) {
+        this.accounts = accounts;
+    };
     AccountService.prototype.getAccountsByUsername = function (username) {
-        return this.http.get('http://localhost:8086/account/all/${username}', { withCredentials: true }).map(function (response) { return response.json(); });
+        return this.http.get("http://localhost:8086/account/all/" + username, { withCredentials: true }).map(function (response) { return response.json(); });
     };
     AccountService.prototype.createAccount = function (account) {
         var headers = new http_1.Headers();
@@ -52,10 +55,11 @@ var AccountService = (function () {
 }());
 exports.AccountService = AccountService;
 var Account = (function () {
-    function Account(id, name, balance, transactions) {
+    function Account(id, name, balance, username, transactions) {
         this.id = id;
         this.name = name;
         this.balance = balance;
+        this.username = username;
         this.transactions = transactions;
     }
     return Account;

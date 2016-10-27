@@ -17,5 +17,6 @@
 	There are no accounts to display!
 </div>
 <div class="well">
+	<span class="label-success" *ngIf="accountCreationMessage !== null">{{accountCreationMessage}}</span>
 	<account-creation-form (accountCreated)="createAccount($event)"></account-creation-form>
 </div>

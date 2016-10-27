@@ -9,14 +9,18 @@ export class AccountService{
 	
 	constructor(private http:Http){}
 	
-	accounts: Account[] = [new Account(1,"Checking",250.00,[]), new Account(2,"Savings",35.60,[])];
+	private accounts: Account[] = null;
 	
 	getAccounts():Account[]{
 		return this.accounts;
 	}
 	
+	setAccounts(accounts:Account[]){
+		this.accounts = accounts;
+	}
+	
 	getAccountsByUsername(username:string):Observable<Account[]>{
-		return this.http.get('http://localhost:8086/account/all/${username}',{ withCredentials: true }).map(response => response.json());
+		return this.http.get(`http://localhost:8086/account/all/${username}`,{ withCredentials: true }).map(response => response.json());
 	}
 	
 	createAccount(account:Account):Observable<Account>{
@@ -55,6 +59,7 @@ export class Account{
 			public id:number,
 			public name:string,
 			public balance:number,
+			public username:string,
 			public transactions:Transaction[]
 	){}
 	

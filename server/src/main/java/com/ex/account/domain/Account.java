@@ -1,5 +1,6 @@
 package com.ex.account.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.ManyToOne;
 import com.ex.user.domain.User;
 
 @Entity
-public class Account {
+public class Account implements Serializable{
 
 	@Id
 	@Column(name = "account_id")
@@ -30,6 +31,14 @@ public class Account {
 		this.id = id;
 		this.name = name;
 		this.balance = balance;
+		this.user = user;
+	}
+	
+	public Account(AccountTO accountTO, User user) {
+		super();
+		this.id = accountTO.getId();
+		this.name = accountTO.getName();
+		this.balance = accountTO.getBalance();
 		this.user = user;
 	}
 

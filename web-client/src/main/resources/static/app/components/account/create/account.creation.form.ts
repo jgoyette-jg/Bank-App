@@ -44,6 +44,7 @@ export default class AccountCreationForm {
 		this.account = new Account(0,
 								this.accountForm.value.accountName,
 								this.accountForm.value.balance,
+								null,
 								[]);
 		this.accountCreated.emit(this.account);
 	}

@@ -27,7 +27,7 @@ var LoginComponent = (function () {
         var _this = this;
         var user = new user_service_1.User(0, this.loginForm.value.username, this.loginForm.value.password, false);
         this.userService.authenticateUser(user)
-            .subscribe(function (user) { _this.userService.setUser(user); _this.router.navigate(['/account']); }, function (error) { console.error(error); _this.loginMessage = error; });
+            .subscribe(function (user) { _this.userService.setUser(new user_service_1.User(null, user.name, null, user.authenticated)); _this.router.navigate(['/account']); console.log(_this.userService.getUser()); }, function (error) { console.error(error); _this.loginMessage = error; });
     };
     LoginComponent = __decorate([
         core_1.Component({

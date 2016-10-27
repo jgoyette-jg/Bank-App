@@ -33,8 +33,9 @@ export default class LoginComponent{
 				false);
 		this.userService.authenticateUser(user)
 				.subscribe(
-				user => {this.userService.setUser(user);this.router.navigate(['/account']);},
+				user => {this.userService.setUser(new User(null,user.name,null,user.authenticated));this.router.navigate(['/account']); console.log(this.userService.getUser());},
 				error => {console.error(error); this.loginMessage = error;}
 				);
+		
 	}
 }

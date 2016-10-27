@@ -17,7 +17,7 @@ export class UserService{
 			return false;
 	}
 	
-	authenticateUser(user:User):Observable<User>{
+	authenticateUser(user:User):Observable<any>{
 		return this.call('http://localhost:8086/user',user).map(response => response.json());
 	}
 	

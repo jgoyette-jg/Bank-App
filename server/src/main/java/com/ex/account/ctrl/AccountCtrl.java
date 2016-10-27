@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ex.account.domain.Account;
+import com.ex.account.domain.AccountTO;
 import com.ex.account.service.AccountService;
 
 @RestController
@@ -25,13 +25,15 @@ public class AccountCtrl {
 	private AccountService accountServiceImpl;
 	
 	@GetMapping("/all/{username}")
-	public ResponseEntity<List<Account>> getAllAccounts(@PathVariable("username") String username){
-		return new ResponseEntity<List<Account>>(accountServiceImpl.findAccountsByUsername(username),HttpStatus.OK);
+	public ResponseEntity<List<AccountTO>> getAllAccounts(@PathVariable("username") String username){
+		System.out.println(username);
+		return new ResponseEntity<List<AccountTO>>(accountServiceImpl.findAccountsByUsername(username),HttpStatus.OK);
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Account>  addAccount(@RequestBody Account account){
-		return new ResponseEntity<Account>(account, HttpStatus.CREATED);
+	public ResponseEntity<AccountTO>  addAccount(@RequestBody AccountTO accountTO){
+		System.out.println(accountTO);
+		return new ResponseEntity<AccountTO>(accountServiceImpl.createAccount(accountTO), HttpStatus.CREATED);
 	}
 
 }
