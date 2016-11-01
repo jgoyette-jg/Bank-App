@@ -21,5 +21,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-web-client/src/**/*.js
-web-client/src/**/*.map
+**/src/**/*.js
+**/src/**/*.map
