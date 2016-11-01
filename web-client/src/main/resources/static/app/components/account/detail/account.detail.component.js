@@ -14,9 +14,15 @@ var account_service_1 = require('../../../services/account/account.service');
 var transaction_service_1 = require('../../../services/transaction/transaction.service');
 var AccountDetailComponent = (function () {
     function AccountDetailComponent(route, accountService, transactionService) {
+        var _this = this;
+        this.route = route;
+        this.accountService = accountService;
+        this.transactionService = transactionService;
+        this.transactions = null;
         var accountId = parseInt(route.snapshot.params['accountId']);
         this.account = accountService.getAccountById(accountId);
-        this.transactions = transactionService.getTransactionsForAccountId(accountId);
+        this.transactionService.getTransactionsForAccountId(accountId)
+            .subscribe(function (transactions) { _this.transactions = transactions; console.log(transactions); }, function (error) { console.log(error); });
     }
     AccountDetailComponent = __decorate([
         core_1.Component({

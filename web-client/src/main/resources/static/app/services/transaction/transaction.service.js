@@ -14,20 +14,13 @@ require('rxjs/add/operator/map');
 var TransactionService = (function () {
     function TransactionService(http) {
         this.http = http;
-        this.transactions = [new Transaction(1, 1, 33.25, 'Food', 'D'), new Transaction(2, 1, 10.33, 'Gas', 'D'), new Transaction(3, 1, 22.10, 'Water', 'D'), new Transaction(4, 2, 22.10, 'Deposit', 'C')];
+        this.transactions = null;
     }
     TransactionService.prototype.getTransactionsForAccountId = function (accountId) {
-        var foundTransactions = [];
-        for (var i = 0; i < this.transactions.length; i++) {
-            if (this.transactions[i].accountId == accountId) {
-                foundTransactions.push(this.transactions[i]);
-            }
-        }
-        return foundTransactions;
+        return this.http.get("http://localhost:8086/transaction/all/" + accountId, { withCredentials: true }).map(function (response) { return response.json(); });
     };
     TransactionService.prototype.addTransaction = function (transaction) {
-        transaction.transactionId = this.transactions.length;
-        this.transactions.push(transaction);
+        return this.http.post('http://localhost:8086/transaction/add', transaction, { withCredentials: true }).map(function (response) { return response.json(); });
     };
     TransactionService.prototype.transferFunds = function (transfer) {
         this.transactions.push(new Transaction(this.transactions.length, transfer.fromAccountId, transfer.amount, transfer.description, 'D'));

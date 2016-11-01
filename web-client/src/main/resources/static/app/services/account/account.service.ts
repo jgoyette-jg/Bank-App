@@ -24,10 +24,7 @@ export class AccountService{
 	}
 	
 	createAccount(account:Account):Observable<Account>{
-	    let headers = new Headers();
-	    headers.append('Content-Type', 'application/json');
-		let options = new RequestOptions({ headers: headers, withCredentials: true });
-		return this.http.post('http://localhost:8086/account/add',account,options).map(response=>response.json());
+		return this.http.post('http://localhost:8086/account/add',account,{withCredentials: true}).map(response=>response.json());
 	}
 	
 	getAccountById(id:number):Account{

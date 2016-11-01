@@ -11,13 +11,18 @@ import {Transaction, TransactionService} from '../../../services/transaction/tra
 export default class AccountDetailComponent{
 	
 	account:Account;
-	transactions:Transaction[];
+	transactions:Transaction[] = null;
 
-	constructor(route: ActivatedRoute, accountService: AccountService, transactionService: TransactionService){
+	constructor(private route: ActivatedRoute, private accountService: AccountService, private transactionService: TransactionService){
 		const accountId = parseInt(route.snapshot.params['accountId']);
 		
 		this.account = accountService.getAccountById(accountId);
-		this.transactions = transactionService.getTransactionsForAccountId(accountId);
+		
+		this.transactionService.getTransactionsForAccountId(accountId)
+						.subscribe(
+								transactions => {this.transactions = transactions; console.log(transactions)},
+								error => {console.log(error);}
+						);
 	}
 	
 }

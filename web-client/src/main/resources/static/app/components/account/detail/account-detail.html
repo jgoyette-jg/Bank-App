@@ -1,6 +1,6 @@
 <h4>Transaction History for {{this.account.name}}</h4>
 
-<table class="table table-hover table-striped">
+<table class="table table-hover table-striped" *ngIf="transactions !== null && transactions.length > 0">
 
 	<thead>
 		<tr>
@@ -16,3 +16,6 @@
 	</thead>
 
 </table>
+<div *ngIf="transactions == null || transactions.length == 0">
+	There are no transactions to display!
+</div>

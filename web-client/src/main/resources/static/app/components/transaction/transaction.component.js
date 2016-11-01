@@ -16,12 +16,13 @@ var TransactionComponent = (function () {
         this.accountService = accountService;
         this.transactionService = transactionService;
         this.accounts = [];
+        this.transactionMessage = null;
         this.accounts = this.accountService.getAccounts();
     }
     TransactionComponent.prototype.transactionMade = function (transaction) {
-        console.log(transaction);
-        this.accountService.updateAccount(transaction);
-        this.transactionService.addTransaction(transaction);
+        var _this = this;
+        this.transactionMessage = "Posting...";
+        this.transactionService.addTransaction(transaction).subscribe(function (success) { _this.transactionMessage = "Successful posting of: " + transaction.amount; _this.accountService.updateAccount(transaction); }, function (error) { console.log(error); _this.transactionMessage = error; });
     };
     TransactionComponent = __decorate([
         core_1.Component({

@@ -13,10 +13,7 @@ export default class AccountComponent{
 	private accountCreationMessage = null;
 	
 	constructor(private accountService:AccountService, private userService:UserService){
-		this.accountService.getAccountsByUsername(this.userService.getUser().username).subscribe(
-				accounts => {this.accounts = accounts; console.log(accounts);},
-				error => {console.log(error);}
-		);
+		this.populateAccounts();
 	}
 	
 	createAccount(account:Account){
@@ -30,7 +27,7 @@ export default class AccountComponent{
 	
 	populateAccounts(){
 		this.accountService.getAccountsByUsername(this.userService.getUser().username).subscribe(
-				accounts => {this.accounts = accounts; console.log(accounts);},
+				accounts => {this.accountService.setAccounts(accounts); this.accounts = this.accountService.getAccounts(); console.log(accounts);},
 				error => {console.log(error);}
 		);
 	}

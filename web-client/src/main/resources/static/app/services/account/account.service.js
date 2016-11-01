@@ -26,10 +26,7 @@ var AccountService = (function () {
         return this.http.get("http://localhost:8086/account/all/" + username, { withCredentials: true }).map(function (response) { return response.json(); });
     };
     AccountService.prototype.createAccount = function (account) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
-        return this.http.post('http://localhost:8086/account/add', account, options).map(function (response) { return response.json(); });
+        return this.http.post('http://localhost:8086/account/add', account, { withCredentials: true }).map(function (response) { return response.json(); });
     };
     AccountService.prototype.getAccountById = function (id) {
         for (var i = 0; i < this.accounts.length; i++) {

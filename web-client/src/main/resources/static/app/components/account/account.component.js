@@ -13,12 +13,11 @@ var account_service_1 = require('../../services/account/account.service');
 var user_service_1 = require('../../services/user/user.service');
 var AccountComponent = (function () {
     function AccountComponent(accountService, userService) {
-        var _this = this;
         this.accountService = accountService;
         this.userService = userService;
         this.accounts = null;
         this.accountCreationMessage = null;
-        this.accountService.getAccountsByUsername(this.userService.getUser().username).subscribe(function (accounts) { _this.accounts = accounts; console.log(accounts); }, function (error) { console.log(error); });
+        this.populateAccounts();
     }
     AccountComponent.prototype.createAccount = function (account) {
         var _this = this;
@@ -28,7 +27,7 @@ var AccountComponent = (function () {
     };
     AccountComponent.prototype.populateAccounts = function () {
         var _this = this;
-        this.accountService.getAccountsByUsername(this.userService.getUser().username).subscribe(function (accounts) { _this.accounts = accounts; console.log(accounts); }, function (error) { console.log(error); });
+        this.accountService.getAccountsByUsername(this.userService.getUser().username).subscribe(function (accounts) { _this.accountService.setAccounts(accounts); _this.accounts = _this.accountService.getAccounts(); console.log(accounts); }, function (error) { console.log(error); });
     };
     AccountComponent = __decorate([
         core_1.Component({

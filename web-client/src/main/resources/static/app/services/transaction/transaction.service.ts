@@ -1,30 +1,23 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {Http, URLSearchParams} from '@angular/http';
+import {Http, URLSearchParams, Headers, RequestOptions} from '@angular/http';
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TransactionService{
 
-	transactions:Transaction[] = [new Transaction(1,1,33.25,'Food','D'),new Transaction(2,1,10.33,'Gas','D'),new Transaction(3,1,22.10,'Water','D'),new Transaction(4,2,22.10,'Deposit','C')];
+	transactions:Transaction[] = null;
 	
 	constructor(private http:Http){
 		
 	}
 	
-	getTransactionsForAccountId(accountId:number):Transaction[]{
-		let foundTransactions:Transaction[] = [];
-		for(let i =0; i<this.transactions.length;i++){
-			if(this.transactions[i].accountId==accountId){
-				foundTransactions.push(this.transactions[i]);
-			}
-		}
-		return foundTransactions;
+	getTransactionsForAccountId(accountId:number):Observable<Transaction[]>{
+			return this.http.get(`http://localhost:8086/transaction/all/${accountId}`,{ withCredentials: true }).map(response => response.json());
 	}
 	
-	addTransaction(transaction:Transaction){
-		transaction.transactionId = this.transactions.length;
-		this.transactions.push(transaction);
+	addTransaction(transaction:Transaction):Observable<Transaction>{
+		return this.http.post('http://localhost:8086/transaction/add',transaction,{withCredentials: true}).map(response=>response.json());
 	}
 	
 	transferFunds(transfer:Transfer){

@@ -12,15 +12,19 @@ import DepositWithdrawFormComponent from '../deposit_withdraw/deposit_withdraw_f
 export default class TransactionComponent{
 	
 	accounts:Account[] = [];
+
+	transactionMessage:string = null;
 	
 	constructor(private accountService: AccountService, private transactionService: TransactionService){
 		this.accounts = this.accountService.getAccounts();
 	}
 	
 	transactionMade(transaction:Transaction){
-		console.log(transaction);
-		this.accountService.updateAccount(transaction);
-		this.transactionService.addTransaction(transaction);
+		this.transactionMessage = "Posting...";
+		this.transactionService.addTransaction(transaction).subscribe(
+			success => {this.transactionMessage = "Successful posting of: " + transaction.amount; this.accountService.updateAccount(transaction);},
+			error => {console.log(error); this.transactionMessage = error; }
+		);
 	}
 	
 }
