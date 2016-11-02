@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ex.account.domain.Account;
+import com.ex.transfer.domain.TransferTO;
 
 @Entity
 @Table(name="acct_transaction")
@@ -31,6 +32,13 @@ public class Transaction {
 		this.amount = t.getAmount();
 		this.description = t.getDescription();
 		this.creditDebit = t.getCreditDebit();
+	}
+	
+	public Transaction(TransferTO t, String creditDebit) {
+		super();
+		this.amount = t.getAmount();
+		this.description = t.getDescription();
+		this.creditDebit = creditDebit;
 	}
 
 	public Transaction() {

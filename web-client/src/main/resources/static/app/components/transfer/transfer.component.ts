@@ -11,16 +11,18 @@ import {Transaction, Transfer, TransactionService} from '../../services/transact
 export default class TransferComponent{
 	
 	accounts:Account[] = [];
+
+	transferMessage:string = null;
 	
 	constructor(private accountService: AccountService, private transactionService: TransactionService){
 		this.accounts = this.accountService.getAccounts();
 	}
 	
 	transferMade(transfer:Transfer){
-		console.log(transfer);
-		this.accountService.updateAccount(new Transaction(0,transfer.fromAccountId,transfer.amount,transfer.description,'D'));
-		this.accountService.updateAccount(new Transaction(0,transfer.toAccountId,transfer.amount,transfer.description,'C'));
-		this.transactionService.transferFunds(transfer);
+		this.transactionService.transferFunds(transfer).subscribe(
+				success => {this.transferMessage = "Successful transfer!"; console.log(success)} ,
+				error 	=> {this.transferMessage = "Failed transfer!"; console.log(error);}
+		);
 	}
 	
 }

@@ -12,6 +12,7 @@ import com.ex.account.repo.AccountRepo;
 import com.ex.transaction.domain.Transaction;
 import com.ex.transaction.domain.TransactionTO;
 import com.ex.transaction.repo.TransactionRepo;
+import com.ex.transfer.domain.TransferTO;
 
 @Service
 @Transactional
@@ -52,6 +53,27 @@ public class TransactionServiceImpl implements TransactionService{
 		savedTransaction.setAccount(account);
 		
 		return new TransactionTO(transactionRepo.save(savedTransaction));
+	}
+
+	@Override
+	public TransferTO addTransfer(TransferTO transfer) {
+		
+		Account fromAccount = accountRepo.findOne(transfer.getFromAccountId());
+		Account toAccount = accountRepo.findOne(transfer.getToAccountId());
+		
+		Transaction fromTrans = new Transaction(transfer, "D");
+		fromTrans.setAccount(fromAccount);
+		
+		Transaction toTrans = new Transaction(transfer, "C");
+		toTrans.setAccount(toAccount);
+		
+		fromAccount.setBalance(fromAccount.getBalance().subtract(transfer.getAmount()));
+		toAccount.setBalance(toAccount.getBalance().add(transfer.getAmount()));
+		
+		transactionRepo.save(fromTrans);
+		transactionRepo.save(toTrans);
+		
+		return transfer;
 	}
 
 }

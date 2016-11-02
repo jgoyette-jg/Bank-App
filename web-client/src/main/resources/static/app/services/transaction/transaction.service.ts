@@ -21,23 +21,7 @@ export class TransactionService{
 	}
 	
 	transferFunds(transfer:Transfer){
-		
-		this.transactions.push(new Transaction(
-							this.transactions.length,
-							transfer.fromAccountId,
-							transfer.amount,
-							transfer.description,
-							'D'
-		));
-		
-		this.transactions.push(new Transaction(
-							this.transactions.length,
-							transfer.toAccountId,
-							transfer.amount,
-							transfer.description,
-							'C'
-		));
-		
+		return this.http.post('http://localhost:8086/transfer/one',transfer,{withCredentials:true}).map(response=>response.json());
 	}
 	
 }

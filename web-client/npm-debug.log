@@ -1,54 +1,22 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'link',
-1 verbose cli   'src/main/resources/static/node_modules',
-1 verbose cli   'node_modules' ]
+1 verbose cli   'start' ]
 2 info using npm@3.10.3
 3 info using node@v6.3.0
-4 verbose linkPkg C:\Git_repo\ang2\Bank-App\web-client\src\main\resources\static\node_modules
-5 silly loadCurrentTree Starting
-6 silly install loadCurrentTree
-7 silly install readGlobalPackageData
-8 silly fetchPackageMetaData node_modules
-9 silly fetchOtherPackageData node_modules
-10 silly cache add args [ 'node_modules', null ]
-11 verbose cache add spec node_modules
-12 silly cache add parsed spec Result {
-12 silly cache add   raw: 'node_modules',
-12 silly cache add   scope: null,
-12 silly cache add   escapedName: null,
-12 silly cache add   name: null,
-12 silly cache add   rawSpec: 'node_modules',
-12 silly cache add   spec: 'C:\\Git_repo\\ang2\\Bank-App\\web-client\\node_modules',
-12 silly cache add   type: 'local' }
-13 error addLocal Could not install C:\Git_repo\ang2\Bank-App\web-client\node_modules
-14 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\node_modules'
-14 silly fetchPackageMetaData     at Error (native)
-14 silly fetchPackageMetaData  error for node_modules { Error: ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\node_modules'
-14 silly fetchPackageMetaData     at Error (native)
-14 silly fetchPackageMetaData   errno: -4058,
-14 silly fetchPackageMetaData   code: 'ENOENT',
-14 silly fetchPackageMetaData   syscall: 'open',
-14 silly fetchPackageMetaData   path: 'C:\\Git_repo\\ang2\\Bank-App\\web-client\\node_modules' }
-15 silly rollbackFailedOptional Starting
-16 silly rollbackFailedOptional Finishing
-17 silly runTopLevelLifecycles Starting
-18 silly runTopLevelLifecycles Finishing
-19 silly install printInstalled
-20 verbose stack Error: ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\src\main\resources\static\node_modules\package.json'
-20 verbose stack     at Error (native)
-21 verbose cwd C:\Git_repo\ang2\Bank-App\web-client
-22 error Windows_NT 6.1.7601
-23 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "link" "src/main/resources/static/node_modules" "node_modules"
-24 error node v6.3.0
-25 error npm  v3.10.3
-26 error path C:\Git_repo\ang2\Bank-App\web-client\src\main\resources\static\node_modules\package.json
-27 error code ENOENT
-28 error errno -4058
-29 error syscall open
-30 error enoent ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\src\main\resources\static\node_modules\package.json'
-31 error enoent ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\src\main\resources\static\node_modules\package.json'
-31 error enoent This is most likely not a problem with npm itself
-31 error enoent and is related to npm not being able to find a file.
-32 verbose exit [ -4058, true ]
+4 verbose stack Error: ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\package.json'
+4 verbose stack     at Error (native)
+5 verbose cwd C:\Git_repo\ang2\Bank-App\web-client
+6 error Windows_NT 6.1.7601
+7 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+8 error node v6.3.0
+9 error npm  v3.10.3
+10 error path C:\Git_repo\ang2\Bank-App\web-client\package.json
+11 error code ENOENT
+12 error errno -4058
+13 error syscall open
+14 error enoent ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\package.json'
+15 error enoent ENOENT: no such file or directory, open 'C:\Git_repo\ang2\Bank-App\web-client\package.json'
+15 error enoent This is most likely not a problem with npm itself
+15 error enoent and is related to npm not being able to find a file.
+16 verbose exit [ -4058, true ]
